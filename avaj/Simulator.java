@@ -1,7 +1,5 @@
 package avaj;
 
-import java.io.File;
-import java.io.PrintStream;
 import java.util.ArrayList;
 
 public class Simulator {
@@ -17,20 +15,11 @@ public class Simulator {
         AircraftFactory.newAircraft("JetPlane",  "J1", 23, 44, 32).registerTower(weatherTower);
         AircraftFactory.newAircraft("Helicopter", "H1", 654, 33, 20).registerTower(weatherTower);
 
-        File outputFile = new File("simulation.txt");
-        try {
-            outputFile.createNewFile();
-        } catch (java.io.IOException e) {
-            System.out.println(e);
+        for (int i = 0; i < simulator.simCount; i++) {
+            Logger.getLogger().log("Simulation " + i);
+            weatherTower.changeWeather();
         }
 
-        try (PrintStream output = new PrintStream(outputFile)) {
-            for (int i = 0; i < simulator.simCount; i++) {
-                output.println("Simulation " + i);
-                weatherTower.changeWeather();
-            }
-        } catch (java.io.FileNotFoundException e) {
-            System.out.println(e);
-        }
+        Logger.getLogger().close();
     }
 }

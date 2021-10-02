@@ -19,7 +19,7 @@ public class WeatherProvider {
 
         int index = (new Random().nextInt(4) + coordinates.getLongitude() + coordinates.getLatitude() + coordinates.getHeight()) % 4;
 
-        return weather[index % 4];
+        return weather[index];
 //        int latitude = coordinates.getLatitude();
 //        int longitude = coordinates.getLongitude();
 //        int height = coordinates.getHeight();
