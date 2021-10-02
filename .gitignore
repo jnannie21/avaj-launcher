@@ -1,2 +1,5 @@
 .idea
 sources.txt
+out/
+*.class
+simulation.txt
