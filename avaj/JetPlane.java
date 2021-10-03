@@ -17,28 +17,28 @@ public class JetPlane extends Aircraft implements Flyable {
         if (weather == "SUN") {
             latitude += 10;
             height += 2;
-            if (height > 100) {
-                height = 100;
-            }
-            Logger.getLogger().log("JetPlane#" + this.name + "(" + this.id + ")" + " This is hot.");
+            Logger.getLogger().log(getInfo() + " This is sunny, lets take a selfie.");
         } else if (weather == "FOG") {
             latitude++;
-            Logger.getLogger().log("JetPlane#" + this.name + "(" + this.id + ")" + " Cant see any problem.");
+            Logger.getLogger().log(getInfo() + " Cant see any problem.");
         } else if (weather == "SNOW") {
             height -= 7;
-            if (height <= 0) {
-                this.weatherTower.unregister(this);
-                Logger.getLogger().log("JetPlane#" + this.name + "(" + this.id + ")" + " landing.");
-                Logger.getLogger().log("JetPlane#" + this.name + "(" + this.id + ")" + " landing coordinates: " +
-                        "longitude " + coordinates.getLongitude() + ", latitude " + coordinates.getLatitude() + ", height " + coordinates.getHeight());
-            } else {
-                Logger.getLogger().log("JetPlane#" + this.name + "(" + this.id + ")" + " OMG! Winter is coming!");
-            }
+            Logger.getLogger().log(getInfo() + " Jingle bells, jingle bells, jingle all the way.");
         } else if (weather == "RAIN") {
             latitude += 5;
-            Logger.getLogger().log("JetPlane#" + this.name + "(" + this.id + ")" + " Damn you rain! You messed up my baloon.");
+            Logger.getLogger().log(getInfo() + " There is no need in washing when its raining.");
+        }
+        if (height < 0) {
+            height = 0;
+        } else if (height > 100) {
+            height = 100;
         }
         coordinates = new Coordinates(longitude, latitude, height);
+        if (height == 0) {
+            this.weatherTower.unregister(this);
+            Logger.getLogger().log(getInfo() + " landing. coordinates: " +
+                    "longitude " + coordinates.getLongitude() + ", latitude " + coordinates.getLatitude() + ", height " + coordinates.getHeight());
+        }
     }
 
     @Override
@@ -46,4 +46,10 @@ public class JetPlane extends Aircraft implements Flyable {
         this.weatherTower = weatherTower;
         this.weatherTower.register(this);
     }
+
+    @Override
+    public String getInfo() {
+        return "JetPlane#" + this.name + "(" + this.id + ")";
+    }
+
 }

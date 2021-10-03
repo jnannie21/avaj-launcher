@@ -20,34 +20,5 @@ public class WeatherProvider {
         int index = (new Random().nextInt(4) + coordinates.getLongitude() + coordinates.getLatitude() + coordinates.getHeight()) % 4;
 
         return weather[index];
-//        int latitude = coordinates.getLatitude();
-//        int longitude = coordinates.getLongitude();
-//        int height = coordinates.getHeight();
-//
-//        if (latitude > 0 && longitude > 0) {
-//            if (height > 50) {
-//                return weather[1];
-//            } else {
-//                return weather[0];
-//            }
-//        } else if (latitude > 0 && longitude < 0) {
-//            if (height > 50) {
-//                return weather[2];
-//            } else {
-//                return weather[1];
-//            }
-//        } else if (latitude < 0 && longitude < 0) {
-//            if (height > 50) {
-//                return weather[3];
-//            } else {
-//                return weather[2];
-//            }
-//        } else {
-//            if (height > 50) {
-//                return weather[0];
-//            } else {
-//                return weather[3];
-//            }
-//        }
     }
 }

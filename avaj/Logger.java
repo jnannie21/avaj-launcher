@@ -11,7 +11,7 @@ public class Logger {
         File outputFile = new File("simulation.txt");
         outputFile.createNewFile();
 
-        PrintStream output = new PrintStream(outputFile);
+        output = new PrintStream(outputFile);
     }
 
     public static Logger getLogger() {
@@ -26,6 +26,7 @@ public class Logger {
     }
 
     public void log(String message) {
+        System.out.println(message);
         output.println(message);
     }
 
